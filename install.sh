@@ -5,6 +5,13 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+
+mkdir -p /usr/src/linux/include/net/ &&
+cp ./include/net/ipx.h /usr/src/linux/include/net/ipx.h &&
+mkdir -p /usr/src/linux/include/uapi/linux/ &&
+cp ./include/uapi/linux/ipx.h /usr/src/linux/include/uapi/linux/ipx.h &&
+
+
 make &&
 cp 8812au.ko /lib/modules/$(uname -r)/kernel/drivers/net/wireless &&
 depmod &&
